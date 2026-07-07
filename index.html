@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0075)file:///C:/Users/Kevin%20Egger/Downloads/Generateur_dossier_employe_10.html -->
+<!-- saved from url=(0075)file:///C:/Users/Kevin%20Egger/Downloads/Generateur_dossier_employe_13.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -453,7 +453,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
 <div class="wrap">
   <div class="card">
     <h2>Pour commencer</h2>
-    <p class="hint">Remplis tes informations ci-dessous. À la fin, la page prépare ton dossier complet (un seul fichier ZIP) à déposer sur l'espace de ton restaurant — le bouton « Ouvrir le dépôt Seafile » en bas t'y emmène (c'est le même lien que celui reçu dans ton mail d'intégration). Tes données restent sur ton appareil.</p>
+    <p class="hint">Remplis tes informations ci-dessous. À la fin, la page prépare ton dossier complet (un seul fichier ZIP) à déposer sur l'espace de ton restaurant — le bouton « Ouvrir le dépôt » en bas t'y emmène (c'est le même lien que celui reçu dans ton mail d'intégration). Tes données restent sur ton appareil.</p>
     <div class="grid">
       <div class="field"><label>Restaurant</label><select id="resto"><option value="plainpalais">Plainpalais</option><option value="collonge">Collonge-Bellerive</option><option value="etoile">Étoile</option><option value="meyrin">Meyrin</option><option value="praille">La Praille</option></select></div>
       <div class="field"><label>Ton statut</label><select id="profil"><option value="frontalier">Frontalier (permis G)</option><option value="suisse">Suisse / permis B-C</option></select></div>
@@ -592,10 +592,10 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     <button class="btn primary block" id="btnZip">Préparer mon dossier (ZIP)</button>
     <div style="display:flex;gap:9px;margin-top:10px">
       <button class="btn" style="flex:1" id="btnPreview" type="button">Prévisualiser les PDF</button>
-      <button class="btn" style="flex:1" id="btnSeafile" type="button">Ouvrir le dépôt Seafile</button>
+      <button class="btn" style="flex:1" id="btnSeafile" type="button">Ouvrir le dépôt</button>
     </div>
     <div class="note green" id="doneMsg" style="margin-top:12px;display:none"></div>
-    <div class="note blue" style="margin-top:12px">Étapes : 1) prépare toutes tes pièces <b>avant</b> de commencer (en une seule fois, pas en plusieurs envois). 2) « Préparer mon dossier » télécharge <b>un seul fichier ZIP</b> avec tes formulaires et tes pièces. 3) « Ouvrir le dépôt Seafile » et dépose ce ZIP.</div>
+    <div class="note blue" style="margin-top:12px">Étapes : 1) prépare toutes tes pièces <b>avant</b> de commencer (en une seule fois, pas en plusieurs envois). 2) « Préparer mon dossier » télécharge <b>un seul fichier ZIP</b> avec tes formulaires et tes pièces. 3) « Ouvrir le dépôt » puis glisse ce ZIP dedans.</div>
   </div>
 </div>
 
@@ -1027,7 +1027,7 @@ $("#btnZip").addEventListener("click",async()=>{
     const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=`Dossier ${d.prenom} ${d.nom}.zip`;document.body.appendChild(a);a.click();setTimeout(()=>{document.body.removeChild(a);URL.revokeObjectURL(url);},150);
     const miss=DOCS.filter(dc=>dc.type==="req"&&!(FILES[dc.key]&&FILES[dc.key].ok)).length;
     const msg=$("#doneMsg");msg.style.display="block";
-    msg.innerHTML=`✓ <b>Dossier ${d.prenom} ${d.nom}.zip</b> téléchargé (${(blob.size/1024).toFixed(0)} Ko).`+check+(miss?` ⚠️ ${miss} pièce(s) obligatoire(s) manquante(s) — tu peux les ajouter et regénérer.`:` Toutes les pièces obligatoires sont présentes.`)+` Dépose-le maintenant via « Ouvrir le dépôt Seafile ».`;
+    msg.innerHTML=`✓ <b>Dossier ${d.prenom} ${d.nom}.zip</b> téléchargé (${(blob.size/1024).toFixed(0)} Ko).`+check+(miss?` ⚠️ ${miss} pièce(s) obligatoire(s) manquante(s) — tu peux les ajouter et regénérer.`:` Toutes les pièces obligatoires sont présentes.`)+` Dépose-le maintenant via « Ouvrir le dépôt » : glisse le fichier ZIP dans la page qui s'ouvre.`;
     toast("Dossier ZIP téléchargé ✓");
   }catch(e){console.error(e);toast("Erreur lors de la création du ZIP : "+(e&&e.message?e.message:e));}
 });

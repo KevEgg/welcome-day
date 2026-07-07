@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0075)file:///C:/Users/Kevin%20Egger/Downloads/Generateur_dossier_employe_13.html -->
+<!-- saved from url=(0075)file:///C:/Users/Kevin%20Egger/Downloads/Generateur_dossier_employe_15.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -579,7 +579,7 @@ https://github.com/nodeca/pako/blob/main/LICENSE
   <!-- SIGNATURE -->
   <div class="card">
     <h2>Date &amp; signature</h2>
-    <p class="hint">Signe une fois avec le doigt (sur téléphone) ou la souris. La même signature et la date du jour s'appliqueront à tes formulaires. Tu peux laisser vide pour signer sur papier.</p>
+    <p class="hint">Signe une fois avec le doigt (sur téléphone) ou la souris. La même signature et la date du jour s'appliqueront à tes formulaires officiels. <b>La signature est nécessaire pour préparer ton dossier.</b></p>
     <div class="grid">
       <div class="field"><label>Lieu</label><input id="signLieu" placeholder="ex. Annemasse"></div>
       <div class="field"><label>Date</label><input type="date" id="signDate"></div>
@@ -1006,12 +1006,22 @@ async function addAttachments(zip,d){
   }
 }
 
-function validate(d){if(!d.prenom||!d.nom){toast("Indique au moins ton prénom et ton nom");return false;}return true;}
+function validate(d,requireSig){if(!d.prenom||!d.nom){toast("Indique au moins ton prénom et ton nom");return false;}
+  if(requireSig&&!d.sig){toast("Signe ton dossier avant de le préparer");const s=$("#sig");if(s)s.scrollIntoView({behavior:"smooth",block:"center"});return false;}
+  return true;}
 
 $("#btnPreview").addEventListener("click",async()=>{const d=collect();if(!validate(d))return;toast("Génération des formulaires…");try{const docs=await buildDocs(d);const blob=new Blob([docs[0].bytes],{type:"application/pdf"});const u=URL.createObjectURL(blob);const w=window.open(u,"_blank");if(!w)window.location=u;toast(docs.length+" PDF généré(s) — aperçu du 1er");}catch(e){console.error(e);toast("Erreur d'aperçu : "+(e&&e.message?e.message:e));}});
 
 $("#btnZip").addEventListener("click",async()=>{
-  const d=collect();if(!validate(d))return;
+  const d=collect();if(!validate(d,true))return;
+  const soft=[];
+  const need=[["naiss","ta date de naissance"],["nat","ta nationalité"],["civil","ton état civil"],["adr","ton adresse"],["localite","ta localité"],["tel","ton téléphone"],["mail","ton e-mail"]];
+  need.forEach(([k,lab])=>{if(!d[k])soft.push(lab);});
+  if(d.profil==="frontalier"&&!d.permis)soft.push("ton permis de travail");
+  if(soft.length){
+    const ok=window.confirm("Certaines informations ne sont pas remplies :\n\n• "+soft.join("\n• ")+"\n\nSi elles te concernent, complète-les avant d'envoyer. Sinon, tu peux continuer.\n\nPréparer quand même le dossier ?");
+    if(!ok)return;
+  }
   try{
     const zip=new JSZip();
     zip.file(`Récapitulatif ${d.prenom} ${d.nom}.pdf`,new Uint8Array(coverDoc(d).output("arraybuffer")));

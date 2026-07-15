@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0075)file:///C:/Users/Kevin%20Egger/Downloads/Generateur_dossier_employe_19.html -->
+<!-- saved from url=(0075)file:///C:/Users/Kevin%20Egger/Downloads/Generateur_dossier_employe_21.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -470,14 +470,14 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     <h3 class="sec">Identité</h3>
     <div class="grid">
       <div class="field"><label>Date de naissance</label><input type="date" id="naiss"></div>
-      <div class="field"><label>Genre</label><select id="genre"><option value=""></option><option>Masculin</option><option>Féminin</option></select></div>
+      <div class="field"><label>Genre</label><select id="genre"><option value="">— Sélectionne —</option><option>Masculin</option><option>Féminin</option></select></div>
       <div class="field"><label>Nationalité</label><input id="nat"></div>
       <div class="field"><label>Autre(s) nationalité(s)</label><input id="nat2"></div>
-      <div class="field"><label>État civil</label><select id="civil"><option value=""></option><option>Célibataire</option><option>Marié(e)</option><option>Partenariat enregistré</option><option>Divorcé(e)</option><option>Séparé(e)</option><option>Veuf(ve)</option></select></div>
+      <div class="field"><label>État civil</label><select id="civil"><option value="">— Sélectionne —</option><option>Célibataire</option><option>Marié(e)</option><option>Partenariat enregistré</option><option>Divorcé(e)</option><option>Séparé(e)</option><option>Veuf(ve)</option></select></div>
       <div class="field"><label>Depuis le (si marié/partenariat)</label><input type="date" id="civilDepuis"></div>
       <div class="field"><label>N° AVS — si tu en as un</label><input id="avs" inputmode="numeric" placeholder="756.…  (laisse vide si tu ne sais pas)"></div>
       <div class="field"><label>Permis de travail — si tu en as déjà un</label><input id="permis" placeholder="G, B, C… (laisse vide sinon)"></div>
-      <div class="field"><label>Si permis G, retour</label><select id="permisRetour"><option value=""></option><option>Journalier</option><option>Hebdomadaire</option></select></div>
+      <div class="field"><label>Si permis G, retour</label><select id="permisRetour"><option value="">— Sélectionne —</option><option>Journalier</option><option>Hebdomadaire</option></select></div>
       <div class="field"><label>Confession (impôt ecclésiastique)</label><input id="confession" placeholder="Laisser vide si non concerné"></div>
     </div>
 
@@ -503,13 +503,13 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         </div>
       </div>
       <div class="field"><label>Taux d'invalidité (si concerné)</label><input id="tauxInval" inputmode="numeric" placeholder="%"></div>
-      <div class="field"><label>Casier judiciaire vierge ?</label><select id="casier"><option value=""></option><option>Oui</option><option>Non</option></select></div>
+      <div class="field"><label>Casier judiciaire vierge ?</label><select id="casier"><option value="">— Sélectionne —</option><option>Oui</option><option>Non</option></select></div>
       <div class="field full"><label>Obligations militaires prochaines ?</label>
-        <select id="militaire"><option value="">—</option><option>Non</option><option>Oui</option></select>
+        <select id="militaire"><option value="">— Sélectionne —</option><option>Non</option><option>Oui</option></select>
         <div class="grid" style="margin-top:8px"><div class="field"><label>Du</label><input type="date" id="milDu"></div><div class="field"><label>Au</label><input type="date" id="milAu"></div></div>
       </div>
-      <div class="field"><label>Diplôme en hôtellerie/restauration ?</label><select id="diplome"><option value=""></option><option>Non</option><option>Oui</option></select></div>
-      <div class="field"><label>Déjà travaillé en hôtellerie/restauration ?</label><select id="experience"><option value=""></option><option>Non</option><option>Oui</option></select></div>
+      <div class="field"><label>Diplôme en hôtellerie/restauration ?</label><select id="diplome"><option value="">— Sélectionne —</option><option>Non</option><option>Oui</option></select></div>
+      <div class="field"><label>Déjà travaillé en hôtellerie/restauration ?</label><select id="experience"><option value="">— Sélectionne —</option><option>Non</option><option>Oui</option></select></div>
     </div>
 
     <h3 class="sec">Autres activités &amp; enfants</h3>
@@ -531,12 +531,12 @@ https://github.com/nodeca/pako/blob/main/LICENSE
     <p class="hint">Concerne les frontaliers (permis G). Ces informations déterminent ton imposition.</p>
     <h3 class="sec">Ta situation</h3>
     <div class="grid">
-      <div class="field"><label>Autre activité rémunérée (Suisse ou étranger) ?</label><select id="is_autre"><option value=""></option><option>Non</option><option>Oui</option></select></div>
-      <div class="field"><label>Taux d'occupation de cette autre activité</label><input id="is_taux" inputmode="numeric" placeholder="%"></div>
-      <div class="field"><label>Salaire brut mensuel de cette autre activité</label><input id="is_salaire" inputmode="numeric" placeholder="CHF"></div>
+      <div class="field"><label>Autre activité rémunérée (Suisse ou étranger) ?</label><select id="is_autre"><option value="">— Sélectionne —</option><option>Non</option><option>Oui</option></select></div>
+      <div class="field"><label>Si oui — taux d'occupation de cette autre activité</label><input id="is_taux" inputmode="numeric" placeholder="%"></div>
+      <div class="field"><label>Si oui — salaire brut mensuel de cette autre activité</label><input id="is_salaire" inputmode="numeric" placeholder="CHF"></div>
       <div class="field"><label>Taux d'occupation indéterminable ?</label><select id="is_indet"><option value=""></option><option>Non</option><option>Oui</option></select></div>
-      <div class="field"><label>Revenus de substitution (chômage, etc.) ?</label><select id="is_subst"><option value=""></option><option>Non</option><option>Oui</option></select></div>
-      <div class="field"><label>Montant mensuel des revenus de substitution</label><input id="is_substMontant" inputmode="numeric" placeholder="CHF"></div>
+      <div class="field"><label>Revenus de substitution (chômage, etc.) ?</label><select id="is_subst"><option value="">— Sélectionne —</option><option>Non</option><option>Oui</option></select></div>
+      <div class="field"><label>Si oui — montant mensuel des revenus de substitution</label><input id="is_substMontant" inputmode="numeric" placeholder="CHF"></div>
       <div class="field full"><label>Adresse de ton autre employeur (facultatif)</label><input id="is_adrEmp"></div>
     </div>
     <label class="check" style="margin-top:14px"><input type="checkbox" id="is_hasPartner"> Je suis marié(e) — déclarer mon/ma partenaire</label>
@@ -547,15 +547,15 @@ https://github.com/nodeca/pako/blob/main/LICENSE
         <div class="field"><label>Date de naissance</label><input type="date" id="is_pNaiss"></div>
         <div class="field"><label>Nationalité</label><input id="is_pNat"></div>
         <div class="field"><label>Type d'autorisation</label><input id="is_pAuth" placeholder="ex. UE avec emploi en Suisse (B)"></div>
-        <div class="field"><label>Le/la partenaire travaille-t-il/elle ?</label><select id="is_pTravaille"><option value=""></option><option>Non</option><option>Oui</option></select></div>
-        <div class="field"><label>A-t-il/elle un revenu ?</label><select id="is_pRevenu"><option value=""></option><option>Non</option><option>Oui</option></select></div>
+        <div class="field"><label>Le/la partenaire travaille-t-il/elle ?</label><select id="is_pTravaille"><option value="">— Sélectionne —</option><option>Non</option><option>Oui</option></select></div>
+        <div class="field"><label>A-t-il/elle un revenu ?</label><select id="is_pRevenu"><option value="">— Sélectionne —</option><option>Non</option><option>Oui</option></select></div>
         <div class="field"><label>Si oui, depuis quand ?</label><input type="date" id="is_pDepuis"></div>
-        <div class="field"><label>Vivez-vous en ménage commun ?</label><select id="menage"><option value=""></option><option>Oui</option><option>Non</option></select></div>
+        <div class="field"><label>Vivez-vous en ménage commun ?</label><select id="menage"><option value="">— Sélectionne —</option><option>Oui</option><option>Non</option></select></div>
         <div class="field"><label>Canton d'activité</label><input id="is_pCanton"></div>
-        <div class="field"><label>Type d'emploi</label><select id="is_pType"><option value=""></option><option>Activité principale</option><option>Activité secondaire</option></select></div>
+        <div class="field"><label>Type d'emploi</label><select id="is_pType"><option value="">— Sélectionne —</option><option>Activité principale</option><option>Activité secondaire</option></select></div>
         <div class="field"><label>Date d'entrée</label><input type="date" id="is_pEntree"></div>
         <div class="field"><label>Permis de travail du/de la partenaire — si concerné</label><input id="is_pPermis" placeholder="G, B, C… (laisse vide sinon)"></div>
-        <div class="field"><label>Si permis G, retour</label><select id="is_pPermisRetour"><option value=""></option><option>Journalier</option><option>Hebdomadaire</option></select></div>
+        <div class="field"><label>Si permis G, retour</label><select id="is_pPermisRetour"><option value="">— Sélectionne —</option><option>Journalier</option><option>Hebdomadaire</option></select></div>
         <div class="field"><label>N° AVS du/de la partenaire — si connu</label><input id="is_pAvs" inputmode="numeric" placeholder="756.…  (laisse vide sinon)"></div>
         <div class="field"><label>Canton de travail</label><input id="is_pCantonTravail" placeholder="ex. GE"></div>
         <div class="field full"><label>Adresse de l'employeur du partenaire (facultatif)</label><input id="is_pAdrEmp"></div>
@@ -1010,6 +1010,10 @@ function validate(d,requireSig){
   if(!d.resto||!RESTAURANTS[d.resto]){toast("Choisis d'abord ton restaurant (tout en haut)");const r=$("#resto");if(r)r.scrollIntoView({behavior:"smooth",block:"center"});return false;}
   if(!d.profil){toast("Choisis ta situation : frontalier ou Suisse");const p=$("#profil");if(p)p.scrollIntoView({behavior:"smooth",block:"center"});return false;}
   if(!d.prenom||!d.nom){toast("Indique au moins ton prénom et ton nom");return false;}
+  if(requireSig&&d.profil==="frontalier"){
+    if(!d.is_autre){toast("Impôt à la source : réponds à « Autre activité rémunérée ? »");const el=$("#is_autre");if(el)el.scrollIntoView({behavior:"smooth",block:"center"});return false;}
+    if(!d.is_subst){toast("Impôt à la source : réponds à « Revenus de substitution ? »");const el=$("#is_subst");if(el)el.scrollIntoView({behavior:"smooth",block:"center"});return false;}
+  }
   if(requireSig&&!d.sig){toast("Signe ton dossier avant de le préparer");const s=$("#sig");if(s)s.scrollIntoView({behavior:"smooth",block:"center"});return false;}
   return true;}
 

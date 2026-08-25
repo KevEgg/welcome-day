@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0075)file:///C:/Users/Kevin%20Egger/Downloads/Generateur_dossier_employe_21.html -->
+<!-- saved from url=(0053)file:///C:/Users/Kevin%20Egger/Downloads/index_1.html -->
 <html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -835,7 +835,7 @@ $("#addKid").addEventListener("click",addKid);
 /* signature canvas */
 const cv=$("#sig");const ctx=cv.getContext("2d");let drawing=false,hasSig=false;
 function resizeCanvas(){const r=cv.getBoundingClientRect();const dpr=window.devicePixelRatio||1;cv.width=r.width*dpr;cv.height=r.height*dpr;ctx.scale(dpr,dpr);ctx.lineWidth=2;ctx.lineCap="round";ctx.strokeStyle="#111";}
-setTimeout(resizeCanvas,50);window.addEventListener("resize",()=>{const data=hasSig?cv.toDataURL():null;resizeCanvas();});
+setTimeout(resizeCanvas,50);window.addEventListener("resize",()=>{const data=hasSig?cv.toDataURL():null;resizeCanvas();if(data){const img=new Image();img.onload=()=>{const r=cv.getBoundingClientRect();ctx.drawImage(img,0,0,r.width,r.height);};img.src=data;}});
 function pos(e){const r=cv.getBoundingClientRect();const t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
 function start(e){drawing=true;const p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);e.preventDefault();}
 function move(e){if(!drawing)return;const p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke();hasSig=true;e.preventDefault();}
@@ -843,6 +843,8 @@ function end(){drawing=false;}
 cv.addEventListener("mousedown",start);cv.addEventListener("mousemove",move);window.addEventListener("mouseup",end);
 cv.addEventListener("touchstart",start,{passive:false});cv.addEventListener("touchmove",move,{passive:false});cv.addEventListener("touchend",end);
 $("#sigClear").addEventListener("click",()=>{ctx.clearRect(0,0,cv.width,cv.height);hasSig=false;});
+function sigInk(){try{const w=cv.width,h=cv.height;if(!w||!h)return false;const px=ctx.getImageData(0,0,w,h).data;for(let i=3;i<px.length;i+=4){if(px[i]!==0)return true;}return false;}catch(e){return hasSig;}}
+
 
 /* ---------- collecte ---------- */
 function collect(){
@@ -863,7 +865,7 @@ function collect(){
     is_pRevenu:val("is_pRevenu"),is_pDepuis:val("is_pDepuis"),menage:val("menage"),
     is_pPermis:val("is_pPermis"),is_pPermisRetour:val("is_pPermisRetour"),is_pAvs:val("is_pAvs"),is_pCantonTravail:val("is_pCantonTravail"),
     is_pAuth:val("is_pAuth"),is_pTravaille:val("is_pTravaille"),is_pCanton:val("is_pCanton"),is_pType:val("is_pType"),is_pEntree:val("is_pEntree"),is_pAdrEmp:val("is_pAdrEmp"),
-    signLieu:val("signLieu"),signDate:val("signDate"),sig:hasSig?cv.toDataURL("image/png"):null
+    signLieu:val("signLieu"),signDate:val("signDate"),sig:sigInk()?cv.toDataURL("image/png"):null
   };
 }
 
